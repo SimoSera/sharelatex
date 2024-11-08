@@ -34,7 +34,7 @@ fi
 
 # preso da bin/upgrade, è necessario siccome senza questo molte funzioni di utility non funzionano
 TOOLKIT_ROOT="$(dirname "$(realpath "$D")")"
-if [[ ! -d "$TOOLKIT_ROOT/bin" ]] || [[ ! -d "$TOOLKIT_ROOT/config" ]]; then
+if [[ ! -d "$TOOLKIT_ROOT/bin" ]] || [[ ! -d "$TOOLKIT_ROOT/lib" ]]; then
   echo "ERROR: could not find root of overleaf-toolkit project (inferred project root as '$TOOLKIT_ROOT')"
   exit 1
 fi
@@ -45,7 +45,7 @@ fi
 # rimuovo i vecchi file
 sudo rm -rf config/
 sudo rm -rf data/
-sudo tar -xvf backups/backupData.tar
+sudo tar -xvf ../backups/backupData.tar
 if test -f config/docker-compose.override.yml; then
 	echo "Rimozione del file config/docker-compse.yml (copia di backup: config/__old.docker-compose.override.yml)"
 	sudo cp config/docker-compose.override.yml config/__old.docker-compose.override.yml
